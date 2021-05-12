@@ -5,8 +5,7 @@ import ListadoTurnos from '../components/ListadoTurnos/ListadoTurnos'
 function Home() {
     return (
         <>
-          <FormularioTurno /> 
-          <ListadoTurnos />
+          <FormularioTurno />           
         </>
     )
 }

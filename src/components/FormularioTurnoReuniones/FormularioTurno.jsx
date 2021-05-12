@@ -25,7 +25,7 @@ function FormularioTurno() {
         e.preventDefault()
         console.log('enviar')
         const db= getFirestore()
-        db.collection('reuniones').add({...formData, cantidadPersonas: parseInt(formData.cantidadPersonas), fecha: firebase.firestore.FieldValue.serverTimestamp(formData.fecha)})
+        db.collection('reuniones').add({...formData, cantidadPersonas: parseInt(formData.cantidadPersonas), fecha: firebase.firestore.Timestamp.fromDate(new Date(formData.fecha))})
         .then(res=>console.log('soy respuesta de set'))
     }
     //firebase.firestore.Timestamp.fromDate(now)
@@ -36,18 +36,30 @@ function FormularioTurno() {
                 <h2 className="text-center">CREAR REUNIÓN</h2>
                 <Form onChange={handlerChange} onSubmit={handlerSubmit} >
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>DÍA</Form.Label>
+                        <Form.Label>Nombre de la Reunión</Form.Label>
                         <Form.Control 
-                            name="dia"
+                            name="nombre"
                             type="text" 
-                            placeholder="Ingrese el Dia" 
+                            placeholder="Ingrese el Nombre de la Reunion" 
                             size="sm" 
                         />
                         <Form.Text className="text-muted">
-                        Día de la reunion.
+                        Nombre de la reunion.
                         </Form.Text>
                     </Form.Group>
 
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Día</Form.Label>
+                        <Form.Control 
+                            name="dia"
+                            type="text" 
+                            size="sm" 
+                            placeholder="Ingrese el Dia de la Reunion" 
+                        />
+                        <Form.Text className="text-muted">
+                        Día de la reunión.
+                        </Form.Text>
+                    </Form.Group>                
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>FECHA</Form.Label>
                         <Form.Control 
@@ -57,6 +69,18 @@ function FormularioTurno() {
                         />
                         <Form.Text className="text-muted">
                         Fecha de la reunión.
+                        </Form.Text>
+                    </Form.Group>                
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>HORA</Form.Label>
+                        <Form.Control 
+                            name="hora"
+                            type="text" 
+                            size="sm" 
+                            placeholder="Ingrese la hora de la Reunion" 
+                        />
+                        <Form.Text className="text-muted">
+                        Hora de la reunión.
                         </Form.Text>
                     </Form.Group>                
                     <Form.Group controlId="formBasicEmail">
@@ -83,9 +107,11 @@ function FormularioTurno() {
     )
 }
 const estadoInicialFormulario = {
+    nombre: '',
     dia: '',
     fecha: '',
-    cantidadPersonas: ''
+    hora: '',
+    cantidadPersonas: 0
 }
 
 export default FormularioTurno
