@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ReunionDetalle({reunion}) {
-    console.log(reunion)
+    
     return (
         <div className="container text-center">
            <h1>{reunion.nombre}</h1>

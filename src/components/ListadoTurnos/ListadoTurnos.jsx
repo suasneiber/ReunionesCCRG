@@ -3,37 +3,12 @@ import Table from 'react-bootstrap/Table'
 import { getFirestore } from '../../Firebase/firebaseConfig'
 import './ListadoTurnos.css'
 
-function ListadoTurnos({id}) {
+function ListadoTurnos({id, handlerAsiste,cambioAsiste}) {
     const [listadoPersonas, setListadoPersonas] = useState([])
     //const [reunion, setReunion] = useState({})
     const [loading, setLoading] = useState(true)
-    const [cambioAsiste, setCambioAsiste] = useState(false)
-    const db = getFirestore()   
-
-    // useEffect(() => {    
-
-    //         // Trae la última reunion creada
-    //         db.collection('reuniones').orderBy("fecha", "desc").limit(1).get()
-    //         .then(reu => {
-    //             return  setReunion({id: reu.docs[0].id, ...reu.docs[0].data()}); 
-    //         })                         
-             
-    // }, [])  
     
-    const handlerAsiste = async (personaId, asiste) => {
-        //console.log('dando de baja', personaId)
-        const docRefPersona = db.collection("personas").doc(personaId)        
-        const docRefReunion = db.collection("reuniones").doc(id)        
-        if (asiste===1) {
-            await docRefPersona.update({ asiste: 2, })  
-            await docRefReunion.update({ cantidadPersonas: 50, })  
-            //setCambioAsiste(!cambioAsiste)          
-        }else{
-            await docRefPersona.update({ asiste: 1 })  
-            await docRefReunion.update({ cantidadPersonas: 0 })  
-        }
-        setCambioAsiste(!cambioAsiste)          
-    }
+    const db = getFirestore()   
     
     useEffect(() => {    
             

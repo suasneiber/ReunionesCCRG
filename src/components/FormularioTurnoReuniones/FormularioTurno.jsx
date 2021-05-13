@@ -10,10 +10,6 @@ import firebase from 'firebase/app'
 function FormularioTurno() {
     const [formData, setFormData] = useState(estadoInicialFormulario)
 
-    useEffect(() => {
-        
-    }, [])
-
     const handlerChange = (e) => {
         setFormData({
             ...formData, 
@@ -26,10 +22,9 @@ function FormularioTurno() {
         console.log('enviar')
         const db= getFirestore()
         db.collection('reuniones').add({...formData, cantidadPersonas: parseInt(formData.cantidadPersonas), fecha: firebase.firestore.Timestamp.fromDate(new Date(formData.fecha))})
-        .then(res=>console.log('soy respuesta de set'))
+        .then(res=> setFormData(estadoInicialFormulario))
     }
-    //firebase.firestore.Timestamp.fromDate(now)
-    console.log(formData);
+    
     return (
         <section className="seccion-crearreunion">
             <div className="container col-5 border border-warning rounded p-3" >
@@ -42,6 +37,7 @@ function FormularioTurno() {
                             type="text" 
                             placeholder="Ingrese el Nombre de la Reunion" 
                             size="sm" 
+                            value={formData.nombre}
                         />
                         <Form.Text className="text-muted">
                         Nombre de la reunion.
@@ -54,7 +50,8 @@ function FormularioTurno() {
                             name="dia"
                             type="text" 
                             size="sm" 
-                            placeholder="Ingrese el Dia de la Reunion" 
+                            placeholder="Ingrese el Dia de la Reunion"
+                            value={formData.dia} 
                         />
                         <Form.Text className="text-muted">
                         Día de la reunión.
@@ -66,6 +63,7 @@ function FormularioTurno() {
                             name="fecha"
                             type="date" 
                             size="sm" 
+                            value={formData.fecha}
                         />
                         <Form.Text className="text-muted">
                         Fecha de la reunión.
@@ -77,7 +75,8 @@ function FormularioTurno() {
                             name="hora"
                             type="text" 
                             size="sm" 
-                            placeholder="Ingrese la hora de la Reunion" 
+                            placeholder="Ingrese la hora de la Reunion"
+                            value={formData.hora} 
                         />
                         <Form.Text className="text-muted">
                         Hora de la reunión.
@@ -92,6 +91,7 @@ function FormularioTurno() {
                             placeholder="Ingrese el núm. de personas" 
                             min={1} 
                             max={50} 
+                            value={formData.cantidadPersonas}
                         />
                         <Form.Text className="text-muted">
                         En la cantidad de personas no estan incluidas el staff.
