@@ -1,0 +1,9 @@
+label{
+    width: 100%;
+    font-size: 1.1em;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgb(0, 0, 0);
+    transition: 0.2s ease-in-out;
+}

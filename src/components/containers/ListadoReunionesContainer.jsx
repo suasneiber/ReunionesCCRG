@@ -9,7 +9,7 @@ function ListadoReunionesContainer() {
     const [loading, setLoading] = useState(true)
     const db= getFirestore()  
     const fechaHoy = new Date() 
-    console.log(fechaHoy);
+    
 
     useEffect(() => {         
         db.collection('reuniones').where('fecha', '>=', fechaHoy).get()//where('fecha', '>=', `${fechaHoy}`)
