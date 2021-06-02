@@ -4,3 +4,13 @@
     align-items: center;
     min-height: 100vh;  
   }
+
+.container {
+    /* flex: 0 0 41.666667%; */
+    max-width: 60%;
+  }
+  @media (max-width: 437px){
+    .container {
+      max-width: 80%;
+    }
+  }
