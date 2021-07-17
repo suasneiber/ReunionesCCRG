@@ -1,0 +1,6 @@
+.navbar{
+    position: fixed;
+    width: 100%;
+    /* margin-top: -49px; */
+    z-index: 1; 
+}
