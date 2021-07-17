@@ -1,3 +1,6 @@
+.col-card{
+    margin-top: 6%;
+}
 label{
     width: 100%;
     font-size: 1.1em;
@@ -7,3 +10,7 @@ label{
     box-shadow: 5px 5px 15px rgb(0, 0, 0);
     transition: 0.2s ease-in-out;
 }
+.card-header:first-child {
+    border-radius: 25px 25px 0 0;
+}
+

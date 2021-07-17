@@ -3,4 +3,21 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;  
+    margin-top: 0;
+  }
+  .container {
+    /* flex: 0 0 41.666667%; */
+    max-width: 60%;
+    margin-top: 10%;
+  }
+  .mt-5, .my-5 {
+    margin-top: 1!important;
+}
+  @media (max-width: 731px){
+    .container {
+      /* flex: 0 0 41.666667%; */
+      max-width: 95%;
+      flex: auto;
+    }
+    
   }
